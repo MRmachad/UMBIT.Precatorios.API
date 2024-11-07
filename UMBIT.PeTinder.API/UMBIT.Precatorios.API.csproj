@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <UserSecretsId>bbc810ae-1b16-477a-ad15-30ea8fc70b4c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UMBIT.PeTinder.Contrato\UMBIT.Precatorios.Contrato.csproj" />
+    <ProjectReference Include="..\UMBIT.PeTinder.Core\UMBIT.Precatorios.Core.csproj" />
+    <ProjectReference Include="..\UMBIT.PeTinder.Infraestrutura\UMBIT.Precatorios.Infraestrutura.csproj" />
+  </ItemGroup>
+
+</Project>

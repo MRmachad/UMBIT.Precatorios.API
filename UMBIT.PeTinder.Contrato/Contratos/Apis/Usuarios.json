@@ -1,0 +1,116 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "UMBIT.Precatorios.API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/obtenha-todos": {
+      "get": {
+        "tags": [ "Usuarios" ],
+        "operationId": "ObtenhaTodos",
+        "description": "Usuarios de usuario",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "security": [
+          { "BearerAuth": [] }
+        ]
+      }
+    },
+    "/remover/{id}": {
+      "delete": {
+        "tags": [ "Usuarios" ],
+        "operationId": "RemoverUsuario",
+        "description": "Remover Usuario de usuario",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/adicionar-permissao": {
+      "post": {
+        "tags": [ "Usuarios" ],
+        "operationId": "AdicionarPermissao",
+        "description": "Adicionar Permissao de usuario",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/permissaoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/remover-permissao": {
+      "post": {
+        "tags": [ "Usuarios" ],
+        "operationId": "RemoverPermissao",
+        "description": "Remover Permissao de usuario",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/permissaoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "permissaoRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "assemblyPermissao": {
+            "type": "string"
+          },
+          "reloadImediato": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

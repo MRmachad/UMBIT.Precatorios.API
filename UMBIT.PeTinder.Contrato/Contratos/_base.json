@@ -1,0 +1,67 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "UMBIT.Precatorios.API",
+    "version": "1.0"
+  },
+  "paths": {},
+  "components": {
+    "schemas": {
+      "Resposta": {
+        "type": "object",
+        "properties": {
+          "sucesso": {
+            "type": "boolean"
+          },
+          "erros": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "titulo": {
+                  "type": "string"
+                },
+                "mensagem": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "errosSistema": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "excecao": {
+                  "type": "string"
+                },
+                "excecaoInterna": {
+                  "type": "string"
+                },
+                "rastreamentoPilha": {
+                  "type": "string"
+                },
+                "metodoCodigoFonte": {
+                  "type": "string"
+                },
+                "nomeArquivoFonte": {
+                  "type": "string"
+                },
+                "LinhaCodigoFonte": {
+                  "type": "number"
+                },
+                "ObjetoManipulado": {
+                  "type": "object",
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

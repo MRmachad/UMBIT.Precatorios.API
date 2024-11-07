@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+		<PackageReference Include="NSwag.MSBuild" Version="14.0.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<OpenApiFiles Include="./Contratos/Apis/*.json">
+			<ApiName>%(filename)</ApiName>
+		</OpenApiFiles>
+	</ItemGroup>
+
+	<ItemGroup>
+		<OpenApiPermissionsFiles Include="./Contratos/Permissoes/*.json">
+			<ApiName>%(filename)</ApiName>
+		</OpenApiPermissionsFiles>
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\UMBIT.PeTinder.Core\UMBIT.Precatorios.Core.csproj" />
+	</ItemGroup>
+
+	<Target Name="NSwag" Outputs="%(OpenApiToClientCode.Identity)" BeforeTargets="PrepareForBuild" Condition="'$(Configuration)' == 'Debug'">
+
+		<Exec Command="$(NSwagExe_Net80) run nswag-apis.json /variables:InputFile=%(OpenApiFiles.Identity),InputName=%(OpenApiFiles.ApiName)" Condition="%(OpenApiFiles.Identity) != ''" />
+		<Message Importance="high" Text="%(OpenApiFiles.Identity)" />
+
+		<Exec Command="$(NSwagExe_Net80) run nswag-permissoes.json /variables:InputFile=%(OpenApiPermissionsFiles.Identity),InputName=%(OpenApiPermissionsFiles.ApiName)" Condition="%(OpenApiPermissionsFiles.Identity) != ''" />
+		<Message Importance="high" Text="%(OpenApiPermissionsFiles.Identity)" />
+
+	</Target>
+
+</Project>

@@ -1,0 +1,126 @@
+﻿{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "UMBIT.Precatorios.API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/data-processo": {
+      "get": {
+        "tags": [ "Judicial" ],
+        "operationId": "ObterDataProcesso",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "security": [
+          { "BearerAuth": [] }
+        ]
+      }
+    },
+    "/data-processo-genc": {
+      "get": {
+        "tags": [ "Judicial" ],
+        "operationId": "ObterVinculosGerenciamentoProcesso",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "security": [
+          { "BearerAuth": [] }
+        ]
+      },
+      "post": {
+        "tags": [ "Judicial" ],
+        "operationId": "CriarVinculosGerenciamentoProcesso",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarVinculosGerenciamentoProcessoRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "security": [
+          { "BearerAuth": [] }
+        ]
+      }
+    }
+  },
+
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "ProcessoDTO": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "numeroProcesso": {
+            "type": "string",
+            "title": "Numeroprocesso"
+          },
+          "classe": {
+            "type": "string",
+            "title": "Classe"
+          },
+          "nome": {
+            "type": "string",
+            "title": "Nome"
+          },
+          "assunto": {
+            "type": "string",
+            "title": "Assunto"
+          },
+          "valor": {
+            "type": "string",
+            "title": "Valor"
+          },
+          "serventia": {
+            "type": "string",
+            "title": "Serventia"
+          }
+        },
+        "type": "object",
+        "title": "ProcessoDTO"
+      },
+      "VinculosGerenciamentoProcessoDTO": {
+        "properties": {
+          "uuid": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "CriarVinculosGerenciamentoProcessoRequest": {
+        "properties": {
+          "uuids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "type": "object"
+      }
+    }
+  }
+}
