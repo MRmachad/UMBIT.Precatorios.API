@@ -16,17 +16,14 @@ namespace UMBIT.Precatorios.Dominio.Entidades.judicial
 
         [Column("NumeroProcesso")]
         [Required]
-        [MaxLength(255)]
         public string NumeroProcesso { get; set; } = string.Empty;
 
         [Column("NumeroProcessoConsulta")]
         [Required]
-        [MaxLength(255)]
         public string NumeroProcessoConsulta { get; set; } = string.Empty;
 
         [Column("Tipo")]
         [Required]
-        [MaxLength(255)]
         public string Tipo { get; set; } = string.Empty;
 
         [Column("created_at")]
